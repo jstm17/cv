@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cv2.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Comfortaa|Montserrat&display=swap" rel="stylesheet"> -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script> 
+    <script src="cv2.js"></script>
+    <style>
+.modelecontour{
+  position: relative;
+  top: 14vw;
+  left: 25%;
+  width: 50%;
+  opacity: 1;
+  box-shadow:  5px 5px 10px #bec3c9, 
+   -5px -5px 10px #ffffff,  inset 5px 5px 10px #bec3c9, 
+  inset -5px -5px 10px #ffffff;
+   height: 2.3vw;
+   border-radius: 100vw;
+   border: 3px solid transparent;
+}
+.modelebar{
+    position: absolute;
+  width: 99.7%;
+  height: 88%;
+  left: 0.1vw;
+  top: 0.1vw;
+  background:linear-gradient(to right, #f54f4f 10%, #fa762a 20%, #f7eb3c 50%, #7cf14e 70%, #35e0e0 90%);
+  border-radius: 100vw;
+  box-shadow: none;
+}
+.notions, .connaissances, .bonnes, .maitrise, .expert{
+  position: absolute;
+  font-size: 1vw;
+  color: #7a7a7a;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  top: 2vw;
+  text-align: center;
+}
+.notions{
+  left: 6.5%;
+}
+.connaissances{
+  left: 22.5%;
+}
+.bonnes{
+  left: 43%;
+}
+.maitrise{
+  left: 66%;
+}
+.expert{
+  left: 87%;
+}
+.bar1, .bar2, .bar3, .bar4{
+  position: absolute;
+  width: 0.1vw;
+  height: 3.5vw;
+  background-color: #7a7a7a;
+  padding :0.02vw;
+  top: -1.75vw;
+  border-radius: 100px;
+}
+.bar1{
+  left: 20%;
+}
+.bar2{
+  left: 40%;
+}
+.bar3{
+  left: 60%;
+}
+.bar4{
+  left: 80%;
+}
+.barpourcent1, .barpourcent2, .barpourcent3, .barpourcent4{
+  position: absolute;
+  top: -4.5vw;
+  color: #7a7a7a;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+.barpourcent1{
+  left: 18%;
+}
+.barpourcent2{
+  left: 38%;
+}
+.barpourcent3{
+  left: 58%;
+}
+.barpourcent4{
+  left: 78%;
+}
+.notionsbar{
+  position: absolute;
+  width: 20%;
+  height: 99%;
+left: 0vw;
+top: 0vw;
+box-shadow: -1px 0px 10px #f53737;
+border-bottom-left-radius: 100vw;
+border-top-left-radius: 100vw;
+background: linear-gradient(0deg, #c030308f 0.5%,#7a7a7a00 99%)
+}
+.connaissancesbar{
+  left: 20%;
+  box-shadow: 0px 0px 10px #fa762a;
+  border-radius: 0px;
+border-bottom-right-radius: 0px;
+border-top-right-radius: 0px;
+background: linear-gradient(0deg, #b859228c 0.05%,#7a7a7a00 99%)
+}
+.bonnesbar{
+  left: 40.2%;
+  box-shadow: 0px 0px 10px #f7eb3c;
+  border-radius: 0px;
+background: linear-gradient(0deg, #a0971c7c 0.05%,#7a7a7a00 99%)
+}
+.maitrisebar{
+  left: 60.25%;
+  box-shadow: 0px 0px 10px #7cf14e;
+  border-radius: 0px;
+background: linear-gradient(0deg, #45a12093 0.05%,#7a7a7a00 99%)
+}
+.expertbar{
+  left: 80.25%;
+  width: 19.6%;
+  box-shadow: 0px 0px 10px #35e0e0;
+border-bottom-left-radius: 0px;
+border-top-left-radius: 0px;
+border-top-right-radius: 100px;
+border-bottom-right-radius: 100px;
+background: linear-gradient(0deg, #20a0a085 0.05%,#7a7a7a00 99%)
+}
+
+@keyframes inputmousedown{
+  0%{
+    box-shadow: inset 5px 5px 10px #bec3c9, 
+  inset -5px -5px 10px;
+  opacity: 1;
+  /* border: 1px solid transparent; */
+  }
+  100%{
+    box-shadow: inset 5px 5px 10px #bec3c9, 
+  inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9, 
+   -5px -5px 10px #ffffff;
+   opacity: 1;
+  }
+}
+.inputmousedown{
+  animation: inputmousedown ease 0.2s forwards;
+}
+@keyframes inputmouseup{
+  0%{
+    box-shadow: inset 5px 5px 10px #bec3c9, 
+  inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9, 
+   -5px -5px 10px #ffffff;
+   opacity: 1;
+   border: none;
+  }
+  100%{
+    box-shadow: inset 5px 5px 10px #bec3c9, 
+  inset -5px -5px 10px;
+  opacity: 1;
+  border: none;
+  }
+}
+.inputmouseup{
+  animation: inputmouseup ease 0.5s forwards;
+}
+.formulairenom{
+  height: 4vw;
+  width: 30%;
+  border-radius: 100vw;
+  border: none;
+  background-color: #e0e5ec;
+  font-size: 1.5vw;
+  padding-left: 2%;
+  font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+  position: absolute;
+  opacity: 1;
+  top: 15vw;
+  left: 15%;
+}
+    </style>
+</head>
+<body>  
+    
+    <div class="anglaiscontour modelecontour">
+        <div class="anglaisbar modelebar">
+        <div class="anglaisbar notionsbar"></div>
+        <div class="anglaisbar notionsbar connaissancesbar"></div>
+        <div class="anglaisbar notionsbar bonnesbar"></div>
+        <div class="anglaisbar notionsbar maitrisebar"></div>
+        <div class="anglaisbar notionsbar expertbar"></div>
+    </div>
+    <p class="notions">Notions</p>
+    <p class="connaissances">Connaissances</p>
+    <p class="bonnes">Bonnes <br> connaissances</p>
+    <p class="maitrise">Maîtrise</p>
+    <p class="expert">Expert</p>
+    <p class="bar1"></p>
+    <p class="bar2"></p>
+    <p class="bar3"></p>
+    <p class="bar4"></p>
+    <p class="barpourcent1">20%</p>
+    <p class="barpourcent2">40%</p>
+    <p class="barpourcent3">60%</p>
+    <p class="barpourcent4">80%</p>
+</div>
+<input type="text" name="" id="nom" class="formulairenom" required placeholder="NOM Prénom">
+</body>
+</html>

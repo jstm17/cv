@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div{
+    border-radius: 50%;
+background: #55b9f3;
+box-shadow: inset 18px 18px 30px #2d6281, 
+    inset -18px -18px 30px #7dffff;
+    padding: 10%;
+    width: 10%;
+    height: 10vw;
+    position: relative;
+}
+p{
+    position: absolute;
+    border-radius: 50%;
+background: #55b9f3;
+box-shadow:  19px 19px 30px #3d85af, 
+     -19px -19px 30px #6dedff;
+     padding: 5%;
+     width: 20vw;
+     height: 20vw;
+     transform: rotate(180deg); 
+     top: 8%;
+     left: 11%;
+}  */
+
+.circular-chart {
+display: block;
+margin: 20px auto;
+max-width: 20%;
+max-height: 250px;
+margin-top: 50px;
+
+position: relative;
+z-index: 40;
+left: 33px;
+top: -27px;
+}
+
+.circle {
+stroke: rgb(0, 255, 140);
+fill: none;
+stroke-width: 4.8;
+stroke-linecap: round;
+animation: progress 1s ease-out forwards;
+
+    position: relative;
+z-index: 40;
+}
+
+@keyframes progress {
+0% {
+stroke-dasharray: 0 100;
+}
+}
+.shape {
+margin: 25px auto 50px;
+position: relative;
+top: 12px;
+left: 18px;
+}
+
+.shape-circle {
+border-radius: 50%;
+position: relative;
+height: 165px;
+width: 165px;
+left: 3.7%;
+/* top: 5%; */
+}
+.shape-circle::after {
+content: "";
+background-color: #ecf0f3;
+border-radius: 50%;
+box-shadow: -12px -12px 30px 5px rgba(255, 255, 255, 0.9), 12px 12px 30px 5px rgba(50, 58, 73, 0.2);
+position: absolute;
+top: 50%;
+left: 50%;
+margin: 0 auto;
+height: 100px;
+width: 100px;
+transform: translate(-50%, -50%);
+}
+.shape-inner-shadow {
+background-color: #e6e9ef;
+box-shadow: inset -12px -12px 30px 5px rgba(255, 255, 255, 0.9), inset 12px 12px 30px 5px rgba(50, 58, 73, 0.2); 
+} 
+/* body{
+    background-color: #e0e5ec;
+}
+div{
+    border-radius: 50px;
+background: #e0e5ec;
+box-shadow:  25px 25px 50px #bec3c9, 
+             -25px -25px 50px #ffffff;
+             height: 20vw;
+             width: 20vw;
+             position: relative;
+             top: 50%;
+             left: 50%;
+}
+div:hover{
+    border-radius: 50px;
+background: #e0e5ec;
+box-shadow:  5px 5px 10px #bec3c9, 
+             -5px -5px 10px #ffffff;
+            
+}
+div:active{
+    border-radius: 50px;
+background: #e0e5ec;
+box-shadow: inset 5px 5px 10px #bec3c9, 
+            inset -5px -5px 10px #ffffff;
+}
+p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #969696;
+    font-weight: bold;
+    font-size: 120%;
+}
+p:hover{
+    color:#61a9ff;
+}
+img{
+      filter: grayscale(100%);
+}
+img:hover{
+    filter: grayscale(0%);
+} */
+    </style>
+</head>
+<body>
+    <div>
+        <p>Profil</p>
+        <img src="profil.png" alt="">
+    </div>
+    <div class="d"></div>
+    <div style="position: relative;">
+        
+        <svg style="position: absolute;" viewBox="1 -5 46 57" class="circular-chart">
+            <path class="circle"
+              stroke-dasharray="80, 100"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+          </svg>
+          
+          <div style="position: absolute;" class="shape shape-circle shape-inner-shadow"></div>
+    </div>
+</body>
+</html>

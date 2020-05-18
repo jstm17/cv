@@ -1,0 +1,272 @@
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4d4f4c;
+    margin: 0px;
+    vertical-align: middle;
+    padding-top: 20px;
+}
+
+header{
+    background-color: #9cd1be;
+    height: 100px;
+    margin: 0px;
+}
+
+body{
+    margin:0px;
+    min-width: 100%;
+    min-height: 130vh;
+    position: relative;
+}
+
+.p{
+    float: left;  
+    border: solid 2px #4d4f4c;
+    border-left: none;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    color: #9cd1be;
+    font-size: 160%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: white;
+}
+.titre{
+    margin : auto;
+    width: 100%;
+    
+}
+.t{
+    width: 20%;
+    padding-right: 1%;
+    padding-left: 1%;
+    cursor: pointer;
+}
+.Profil{
+    
+    float: left;  
+    border: solid 2px #4d4f4c;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    color: #9cd1be;
+    font-size: 160%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: white;
+}
+
+.t:hover{
+    background-color: #4d4f4c ;
+    color: white;
+}
+
+/*Texte Profil*/
+
+.textep{
+    max-width: 75%;
+    margin: auto;
+    min-height: 50vh;
+    border: 7px solid #4d4f4c;
+    margin-top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 110%;
+    padding: 3%;
+    display: none;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    
+}
+
+/*Texte Formation*/
+
+.textef{
+    width: 75%;
+    margin: auto;
+    min-height: 50vh;
+    border: 7px solid #4d4f4c;
+    margin-top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 110%;
+    padding: 3%;
+    display: none;
+    margin-bottom: 5%;
+    border-radius: 10px;
+}
+
+.date{
+   float: left;
+    font-weight: bold;
+    color: #53a788;
+    
+}
+.letextef{
+    border-left: 3px solid #4d4f4c;
+    margin-left: 110px;
+    padding-left: 2%;
+   
+}
+.espace{
+    margin-top: 50px;
+}
+
+/*Texte expérience*/
+.textee{
+    width: 75%;
+    margin: auto;
+    min-height: 50vh;
+    border: 7px solid #4d4f4c;
+    margin-top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 110%;
+    padding: 3%;
+    display: none;
+    margin-bottom: 5%;
+    border-radius: 10px;
+}
+
+.date{
+   float: left;
+    font-weight: bold;
+    color: #53a788;
+    
+}
+.letextee{
+    border-left: 3px solid #4d4f4c;
+    margin-left: 110px;
+    padding-left: 2%;
+   
+}
+.espace{
+    margin-top: 50px;
+}
+
+/*texte compétences*/
+.textec{
+    width: 75%;
+    margin: auto;
+    min-height: 50vh;
+    border: 7px solid #4d4f4c;
+    margin-top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 110%;
+    padding: 3%;
+    display: none;
+    margin-bottom: 5%;
+    border-radius: 10px;
+}
+
+/*Texte intérêts*/
+.textei{
+    width: 75%;
+    margin: auto;
+    min-height: 50vh;
+    border: 7px solid #4d4f4c;
+    margin-top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 110%;
+    padding: 3%;
+    display: none;
+    margin-bottom: 5%;
+    border-radius: 10px;
+}
+
+.site{
+    
+    color: #4d4f4c;
+    font-weight: bold;
+    text-decoration: none;
+}
+.site:hover{
+    color: #53a788;
+    text-decoration: underline;
+}
+
+/*Formulaire*/
+footer{
+    background-color: #4d4f4c;
+    min-width: 100%;
+    height: 40vh;
+    position: absolute;
+    bottom: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.formu{
+    margin: auto;
+    width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+
+
+button:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(60, 78, 117);
+}
+
+select{
+    border-radius: 5px;
+}
+
+textarea{
+    border-radius: 5px;
+}
+
+input{
+    border-radius: 5px;
+    border: solid 1px;
+}
+input:required{
+    border: solid red 1px;
+}
+
+span{
+    color: red;
+    margin: 0
+}
+
+input:required:valid{
+    border: solid green 1px;
+    background-color: white;
+    background-size: 13px;
+}
+
+label[for=monsieur]{
+    margin-left: 30px;
+}
+
+h2{
+    text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+p{
+    text-align: center;
+}
+
+textarea{
+    width: 300px;
+    margin: auto;
+}
+
+.envoyer{
+    background-color: white;
+    color: #53a788;
+    padding: 5px;
+    width: 300px;
+    border-radius: 10px;
+    border: solid 1px #53a788;
+    margin: auto;
+    display: block;
+    cursor: pointer;
+}
+.envoyer:hover{
+    background-color: #9cd1be;
+    color: #4d4f4c;
+    border: solid 1px #9cd1be;
+}
