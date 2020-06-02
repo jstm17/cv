@@ -30,6 +30,7 @@ body {
   background: transparent
 }
 
+
 /* Enlever la bordure bleu quand on clique sur un bouton, un input ou un textarea */
 button:focus,
 input:focus,
@@ -49,8 +50,8 @@ textarea:focus {
 .dot,
 .trigger {
   position: absolute;
-  top: 0vw;
-  left: 0;
+  top: 13vw;
+  left: 50vw;
   transform: translate(-50%, -50%);
   height: var(--size);
   width: var(--size);
@@ -66,10 +67,10 @@ textarea:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
   color: rgba(0, 0, 0, 0.5);
   letter-spacing: 0.05em;
   cursor: pointer;
-  background: url(logo/photocvronde.png) no-repeat center/90%;
   box-shadow: 25px 25px 50px #bec3c9,
     -25px -25px 50px #ffffff;
 }
@@ -122,35 +123,50 @@ textarea:focus {
 
 /* JS */
 .nom {
+  position: relative;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  font-size: 2vw;
-  top: 14vw;
-  left: -8.9vw;
-  color: #7a7a7a;
-  width: 600px;
-  filter: brightness(100%);
+  font-size: 10vw;
+  top: 7.8vw;
+  left: -4vw;
+  /* z-index: 3; */
+  width: 110%;
+  text-align: center;
+  background-color: #565656;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
 }
 
-/* Animation JS : rend "JS" plus sombre*/
+/* Animation JS qd on le survole*/
 @keyframes nomhover {
   0% {
-    filter: brightness(100%);
+    background-color: #565656;
   }
 
   100% {
-    filter: brightness(60%);
+    background-color: #b1a500;
+  }
+}
+/* Animation JS qd on ne le survole plus*/
+.nomhover {
+  animation: nomhover 0.4s ease forwards;
+}
+
+@keyframes nommouseout{
+  0% {
+    background-color: #b1a500;
+  }
+
+  100% {
+    background-color: #565656;
   }
 }
 
-.nomhover {
-  animation: nomhover 0.4s ease;
-  filter: brightness(60%);
-}
-
-.photo {
-  top: 20vw;
-  left: 50vw;
+.nommouseout {
+  animation: nommouseout 0.5s ease forwards;
 }
 
 /* Page accueil */
@@ -546,7 +562,7 @@ textarea:focus {
 }
 
 .infosphoto {
-  height: 40%;
+  height: 47%;
   width: 40%;
   box-shadow: 5px 5px 10px #bec3c9,
     -5px -5px 10px #ffffff;
@@ -555,7 +571,7 @@ textarea:focus {
   left: 30%;
   top: 19%;
   opacity: 0;
-
+  /* background: url(logo/photoprofil.png) no-repeat center/100%; */
 }
 
 /* Mise en forme des logo dans la page profil */
@@ -1036,6 +1052,8 @@ textarea:focus {
   font-size: 2vw;
   opacity: 0;
   margin-left: 10%;
+  text-align: center;
+  width: 10vw;
 }
 
 /* Mise en forme du mot anglais */

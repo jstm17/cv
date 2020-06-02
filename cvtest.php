@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="cvtest.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Montserrat&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     <script src="cvtest.js"></script>
 
 </head>
@@ -16,7 +16,6 @@
 
     <!-- Page du début -->
     <div class="page1" style="position: relative;">
-        <div class="photo" style="position: absolute;">
             <input id="trigger" type="checkbox" hidden>
             <label class="trigger" for="trigger"></label>
 
@@ -25,10 +24,7 @@
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
-            <div class="nom" style="position: absolute;">
-                <p class="nom2">Julie SAINT MARTIN</p>
-            </div>
-        </div>
+            <p class="nom">JS</p>
     </div>
 
     <!-- Page d'accueil -->
@@ -70,7 +66,7 @@
             <p class="infostexte infostexte2">
                 Je suis actuellement en 1ère année de DUT Métiers du Multimédia et de l’Internet.
                 Après avoir obtenu mon diplôme MMI, j’aimerais continuer mes études dans une
-                école d’ingénieurs pour devenir un développeur Front-End ou un UI/IX Designer.
+                école d’ingénieurs pour devenir un développeur web full stack.
             </p>
             <!-- Photo -->
             <div class="infosphoto"></div>

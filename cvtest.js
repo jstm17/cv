@@ -6,15 +6,18 @@ $(document).ready(function () {
         $(this).addClass("triggerhover")
         $(this).removeClass("triggermouseout")
         $(".nom").addClass("nomhover")
+        $(".nom").removeClass("nommouseout")
 
     })
     $(".trigger").mouseout(function () {
         $(this).removeClass("triggerhover")
         $(this).addClass("triggermouseout")
         $(".nom").removeClass("nomhover")
+        $(".nom").addClass("nommouseout")
     })
     $(".trigger").mousedown(function () {
         $(this).addClass("casemousedown")
+        $(this).removeClass("triggerhover")
     })
 
     var apparition = function(){
@@ -27,6 +30,7 @@ $(document).ready(function () {
         $(".dot").fadeOut(3000);
         $(".page1").fadeOut(2000);
         setTimeout(apparition, 2000);
+        $(".nom").css({"background-color": "#b1a500"})
     })
 
     // Animations des 6 cases

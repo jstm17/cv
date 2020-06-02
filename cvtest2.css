@@ -1,0 +1,1879 @@
+:root {
+    --gray: #e0e5ec;
+    --size: 25vw;
+    --scalingFactor: calc(100 / 25);
+  }
+  
+  body {
+    background: var(--gray);
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    cursor: default;
+  }
+  
+  /* Rendre transparente la barre de scroll */
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent
+  }
+  
+  
+  /* Enlever la bordure bleu quand on clique sur un bouton, un input ou un textarea */
+  button:focus,
+  input:focus,
+  textarea:focus {
+    outline: 0;
+  }
+  
+  /* Page du début */
+  .page1 {
+    display: block;
+    z-index: 40;
+    background-color: transparent;
+    width: 100vw;
+  }
+  
+  /* dot = cercle qui font des vagues et trigger = le gros cercle au milieu*/
+  .dot,
+  .trigger {
+    position: absolute;
+    top: 13vw;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    height: var(--size);
+    width: var(--size);
+    margin: 10px;
+    background: var(--gray);
+    border-radius: 50%;
+  
+  
+  }
+  
+  .trigger {
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 25px 25px 50px #bec3c9,
+      -25px -25px 50px #ffffff;
+  }
+  
+  /* Animation du gros cercle */
+  .triggerhover {
+    animation: casehover ease 0.1s forwards;
+  }
+  
+  .triggermouseout {
+    animation: casemouseout ease 0.1s forwards;
+  }
+  
+  /* Animation des cercles wave */
+  #trigger:checked+.trigger+.dots>.dot {
+    animation-name: wave;
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
+  
+  .dot {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1);
+    box-shadow: inset 5px 5px 10px #bec3c9,
+      inset -5px -5px 10px #ffffff;
+  }
+  
+  .dot:nth-of-type(2) {
+    z-index: 1;
+    animation-delay: 0.5s;
+  }
+  
+  .dot:nth-of-type(3) {
+    z-index: 2;
+    animation-delay: 1s;
+  }
+  
+  @keyframes wave {
+    0% {
+      opacity: 1;
+      transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
+    }
+  
+    100% {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale3d(var(--scalingFactor), var(--scalingFactor), 1);
+    }
+  }
+  
+  /* JS */
+  .nom {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 10vw;
+    top: 7.8vw;
+    left: -4vw;
+    /* z-index: 3; */
+    width: 110%;
+    text-align: center;
+    background-color: #565656;
+    color: transparent;
+    text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
+  }
+  
+  /* Animation JS qd on le survole*/
+  @keyframes nomhover {
+    0% {
+      background-color: #565656;
+    }
+  
+    100% {
+      background-color: #b1a500;
+    }
+  }
+  /* Animation JS qd on ne le survole plus*/
+  .nomhover {
+    animation: nomhover 0.4s ease forwards;
+  }
+  
+  @keyframes nommouseout{
+    0% {
+      background-color: #b1a500;
+    }
+  
+    100% {
+      background-color: #565656;
+    }
+  }
+  
+  .nommouseout {
+    animation: nommouseout 0.5s ease forwards;
+  }
+  
+  /* Page accueil */
+  .page2 {
+    display: none;
+    background-color: transparent;
+  }
+  
+  /* On cache les autres pages */
+  .pageprofil,
+  .pageformations,
+  .pageexperiences,
+  .pageinterets,
+  .pagecompetences,
+  .pageformulaire {
+    display: none;
+    background-color: transparent;
+  }
+  
+  /* Les 6 cases */
+  .case {
+    content: "";
+    border-radius: 25%;
+    background: url(logo/profil.png) no-repeat 50% 35%/40%;
+    opacity: 0;
+    height: 14vw;
+    width: 14vw;
+    border: none;
+    filter: grayscale(100%);
+    position: absolute;
+    z-index: 4;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 8vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Animation au survol des cases */
+  @keyframes casehover {
+    0% {
+      box-shadow: 25px 25px 50px #bec3c9,
+        -25px -25px 50px #ffffff;
+    }
+  
+    100% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+    }
+  }
+  
+  .casehover {
+    animation: casecouleur 0.4s ease forwards, casehover 0.1s ease forwards;
+    opacity: 1;
+  }
+  
+  /* Animation au non survol des cases */
+  @keyframes casemouseout {
+    0% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+    }
+  
+    100% {
+      box-shadow: 25px 25px 50px #bec3c9,
+        -25px -25px 50px #ffffff;
+    }
+  }
+  
+  .casemouseout {
+    animation: casemouseout 0.1s ease forwards, casegrise 0.4s ease forwards;
+    opacity: 1;
+  }
+  
+  /* Animation au survol des cases, elles prennent de la couleur */
+  @keyframes casecouleur {
+    0% {
+      filter: grayscale(100%);
+    }
+  
+    100% {
+      filter: grayscale(0%);
+    }
+  }
+  
+  /* Animation au non survol des cases, elles redeviennent grises */
+  @keyframes casegrise {
+    0% {
+      filter: grayscale(0%);
+    }
+  
+    100% {
+      filter: grayscale(100%);
+    }
+  }
+  
+  /* Animation des cases qd elles apparaissent */
+  @keyframes caseapparition {
+    0% {
+      box-shadow: none;
+      opacity: 0;
+    }
+  
+    100% {
+      box-shadow: 25px 25px 50px #bec3c9,
+        -25px -25px 50px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .caseapparition {
+    animation: caseapparition ease 0.5s forwards 0.5s;
+  }
+  
+  /* Animation des cases qd elles disparaissent */
+  @keyframes casedisparition {
+    0% {
+      box-shadow: 25px 25px 50px #bec3c9,
+        -25px -25px 50px #ffffff;
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      box-shadow: none;
+      opacity: 0;
+    }
+  }
+  
+  .casedisparition {
+    animation: casedisparition ease 0.5s forwards;
+  }
+  
+  /* Animation de la case choisie qd elle disparait */
+  @keyframes casedisparition2 {
+    50% {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  
+    100% {
+      box-shadow: none;
+      opacity: 0;
+      filter: grayscale(0%);
+    }
+  }
+  
+  .casedisparition2 {
+    animation: casedisparition2 ease 0.5s forwards;
+  }
+  
+  /* Animation des cases quand on clique dessus */
+  .casemousedown {
+    box-shadow: inset 5px 5px 10px #bec3c9,
+      inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9,
+      -5px -5px 10px #ffffff;
+    opacity: 1;
+    border: 1px solid transparent;
+    filter: grayscale(0%);
+  }
+  
+  /* Mise en forme des 6 cases */
+  .case1 {
+    background: url(logo/profil.png) no-repeat 50% 35%/40%;
+    top: 7vw;
+    left: 23%;
+    color: #6ea2d7;
+  }
+  
+  .case2 {
+    background: url(logo/formations.png) no-repeat 50% 40%/45%;
+    top: 7vw;
+    left: 43.5%;
+    color: #d66f70;
+  }
+  
+  .case3 {
+    background: url(logo/experiences.png) no-repeat 50% 34%/43%;
+    top: 7vw;
+    left: 64vw;
+    color: #d1aa71;
+  }
+  
+  .case4 {
+    background: url(logo/competences.png) no-repeat 50% 30%/45%;
+    top: 26vw;
+    left: 23%;
+    color: #79be7a;
+  }
+  
+  .case5 {
+    background: url(logo/interets.png) no-repeat 50% 37%/40%;
+    top: 26vw;
+    left: 43.5%;
+    color: #cc87b0;
+  }
+  
+  .case6 {
+    background: url(logo/formulaire.png) no-repeat 50% 29%/35%;
+    top: 26vw;
+    left: 64%;
+    color: #75ccb3;
+  }
+  
+  /* Mise en forme du bouton home */
+  .home {
+    content: "";
+    border-radius: 25%;
+    background: url(logo/home2.png) no-repeat center/60%;
+    height: 5vw;
+    width: 5vw;
+    border: none;
+    position: absolute;
+    z-index: 4;
+    top: 2vw;
+    left: 2%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  
+  /* Mise en forme des titres */
+  .titre {
+    content: "";
+    position: absolute;
+    border: none;
+    border-radius: 1.3vw;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2vw;
+    font-weight: bold;
+    top: 2vw;
+    left: 40%;
+    opacity: 0;
+    height: 5vw;
+  }
+  
+  /* Mise en forme du titre profil */
+  .profil {
+    /* background: url(logo/profil.png) no-repeat 30%/10%; */
+    width: 20vw;
+    color: #6ea2d7;
+    z-index: 4;
+    padding-left: 3%;
+  }
+  
+  /* Animation lorsqu'on survole le bouton home */
+  @keyframes homehover {
+    0% {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/home2.png) no-repeat center/60%;
+    }
+  
+    100% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      background: url(logo/home.png) no-repeat center/60%;
+    }
+  }
+  
+  .homehover {
+    animation: homehover 0.1s ease forwards;
+    background: url(logo/home.png) no-repeat center/60%;
+    opacity: 1;
+  }
+  
+  /* Animation lorsqu'on ne survole plus le bouton home */
+  @keyframes homemouseout {
+    0% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      background: url(logo/home.png) no-repeat center/60%;
+    }
+  
+    100% {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/home2.png) no-repeat center/60%;
+    }
+  
+  }
+  
+  .homemouseout {
+    animation: homemouseout ease 0.1s forwards;
+    opacity: 1;
+  
+  }
+  
+  /* Animation lorsqu'on appuie sur le bouton home */
+  .homemousedown {
+    box-shadow: inset 5px 5px 10px #bec3c9,
+      inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9,
+      -5px -5px 10px #ffffff;
+    opacity: 1;
+  
+  }
+  
+  /* Animation lorsque le bouton home apparait */
+  @keyframes homeapparition {
+    from {
+      box-shadow: none;
+      opacity: 0;
+    }
+  
+    to {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .homeapparition {
+    animation: homeapparition ease 0.5s forwards 0.5s;
+  }
+  
+  /* Animation lorsque le bouton home disparait */
+  @keyframes homedisparition {
+    100% {
+      box-shadow: none;
+      opacity: 0;
+    }
+  }
+  
+  .homedisparition {
+    animation: homedisparition ease 0.5s forwards;
+  }
+  
+  /* Animation des reliefs qui disparaissent quand on retourne à l'accueil */
+  @keyframes profildisparition {
+    0% {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      box-shadow: none;
+      opacity: 0;
+    }
+  }
+  
+  .profildisparition {
+    animation: profildisparition ease 0.5s forwards;
+  }
+  
+  /* Mise en forme des éléments dans la page profil */
+  .infos {
+    content: "";
+    position: absolute;
+    border: none;
+    border-radius: 1.8vw;
+    color: #6ea2d7;
+    font-weight: bold;
+    width: 35vw;
+    height: 28.1vw;
+    z-index: 4;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5vw;
+    top: 12vw;
+    left: 55%;
+    padding: 1%;
+    opacity: 0;
+    text-align: center;
+  }
+  
+  .infos2 {
+    height: 28.1vw;
+    top: 12vw;
+    left: 9%;
+  }
+  
+  .infostexte {
+    text-align: left;
+    padding: 9%;
+    padding-left: 35%;
+    font-size: 1vw;
+    color: #7a7a7a;
+    box-shadow: inset 5px 5px 10px #bec3c9,
+      inset -5px -5px 10px #ffffff;
+    border-radius: 1.3vw;
+  }
+  
+  .infostexte2 {
+    padding: 4%;
+    text-align: center;
+    padding-top: 50%;
+  }
+  
+  .infosphoto {
+    height: 47%;
+    width: 40%;
+    box-shadow: 5px 5px 10px #bec3c9,
+      -5px -5px 10px #ffffff;
+    position: absolute;
+    border-radius: 1.3vw;
+    left: 30%;
+    top: 19%;
+    opacity: 0;
+    background: url(logo/photoprofil.png) no-repeat center/100%;
+  }
+  
+  /* Mise en forme des logo dans la page profil */
+  .adresse {
+    height: 10%;
+    width: 8%;
+    box-shadow: 5px 5px 10px #bec3c9,
+      -5px -5px 10px #ffffff;
+    position: absolute;
+    top: 19.6%;
+    border-radius: 1vw;
+    left: 23%;
+    background: url(logo/adresse.png) no-repeat center/50%;
+    opacity: 0;
+  }
+  
+  .mail {
+    top: 39.4%;
+    background: url(logo/mail.png) no-repeat center/60%;
+  
+  }
+  
+  .tel {
+    top: 59%;
+    background: url(logo/tel.png) no-repeat center/55%;
+  
+  }
+  
+  .site {
+    top: 79.4%;
+    background: url(logo/site.png) no-repeat center/60%;
+  }
+  
+  .infosite:hover {
+    color: #6ea2d7;
+  }
+  
+  .infosite:visited {
+    color: #6ea2d7;
+  }
+  
+  /* Animation des logos qui disparaissent quand on retourne à l'accueil */
+  @keyframes logodisparition {
+    0% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      box-shadow: none;
+      opacity: 0;
+    }
+  }
+  
+  .logodisparition {
+    animation: logodisparition ease 0.5s forwards;
+  }
+  
+  /* Animation des logos qui apparaissent quand on clique sur la case profil*/
+  @keyframes logoapparition {
+    0% {
+      box-shadow: none;
+      opacity: 0;
+    }
+  
+    100% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .logoapparition {
+    animation: logoapparition ease 0.5s forwards 0.5s;
+  }
+  
+  /* Mise en forme du titre formations dans la page formations */
+  .formations {
+    background: url(logo/formations.png) no-repeat 21%/12%;
+    width: 25vw;
+    color: #d66f70;
+    z-index: 4;
+    padding-left: 4.5%;
+    left: 37.5%;
+  }
+  
+  /* Mise en forme de la formations 1 */
+  .formation1 {
+    content: "";
+    position: relative;
+    border: none;
+    border-radius: 1.8vw;
+    color: #d66f70;
+    font-weight: bold;
+    width: 82vw;
+    height: 8.9vw;
+    z-index: 4;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5vw;
+    top: 12vw;
+    left: 7%;
+    padding-left: 4%;
+    opacity: 0;
+    text-align: center;
+    margin-bottom: 5vw;
+  }
+  
+  .formationtexte1 {
+    text-align: left;
+    padding: 2%;
+    font-size: 1vw;
+    color: #7a7a7a;
+    box-shadow: inset 5px 5px 10px #bec3c9,
+      inset -5px -5px 10px #ffffff;
+    border-radius: 1.3vw;
+    position: absolute;
+    left: 14%;
+    width: 69.8vw;
+    top: -2%;
+  }
+  
+  .annéeformations {
+    position: absolute;
+    font-size: 2vw;
+    line-height: 1.7vw;
+    top: 1%;
+  }
+  
+  /* Mise en forme de la formation 2 */
+  .formation2 {
+    height: 7.7vw;
+  }
+  
+  .annéeformations2 {
+    top: 15%;
+  }
+  
+  .gras {
+    font-size: 1.2vw;
+    color: #4b4b4b;
+  }
+  
+  /* Mise en forme du titre expériences dans la page expériences */
+  .experiences {
+    background: url(logo/experiences.png) no-repeat 21%/10%;
+    width: 25vw;
+    color: #d1aa71;
+    z-index: 4;
+    padding-left: 4.5%;
+    left: 37.5%;
+  }
+  
+  /* Mise en forme de l'expérience 1 */
+  .experience1 {
+    content: "";
+    /* box-shadow:  15px 15px 30px #bec3c9, 
+             -15px -15px 30px #ffffff; */
+    position: relative;
+    border: none;
+    border-radius: 1.8vw;
+    color: #d1aa71;
+    font-weight: bold;
+    width: 83.8vw;
+    height: 10vw;
+    z-index: 4;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5vw;
+    top: 12vw;
+    left: 7%;
+    padding-left: 2.5%;
+    opacity: 0;
+    text-align: center;
+    margin-bottom: 5vw;
+  }
+  
+  .experiencetexte1 {
+    text-align: left;
+    padding: 2%;
+    font-size: 1vw;
+    color: #7a7a7a;
+    box-shadow: inset 5px 5px 10px #bec3c9,
+      inset -5px -5px 10px #ffffff;
+    border-radius: 1.3vw;
+    position: absolute;
+    left: 14%;
+    width: 70vw;
+    top: -2%;
+  }
+  
+  .annéeexperiences {
+    position: absolute;
+    font-size: 2vw;
+    line-height: 1.7vw;
+    top: 10%;
+  }
+  
+  .moisexperiences {
+    font-size: 1.5vw;
+    line-height: 1.5vw;
+    top: 100%;
+    left: -5%;
+  }
+  
+  /* Mise en forme de l'expérience 2 */
+  .experience2 {
+    height: 10vw;
+  }
+  
+  .annéeexperiences2 {
+    top: 10%;
+    left: 4.3%;
+  }
+  
+  /* Mise en forme de l'expérience 3 */
+  .experience3 {
+    margin-bottom: 5vw;
+  }
+  
+  .annéeexperiences3 {
+    top: 25%;
+    left: 4.4%;
+  }
+  
+  .teaser:hover {
+    color: #d1aa71;
+  }
+  
+  .teaser:visited {
+    color: #d1aa71;
+  }
+  
+  /* Mise en forme du tire compétences dans la page compétences */
+  .competences {
+    background: url(logo/competences.png) no-repeat 19.5%/11%;
+    width: 28vw;
+    color: #79be7a;
+    z-index: 4;
+    padding-left: 5%;
+    left: 36%;
+  }
+  
+  /* Mise en forme du contour de la barre d'exemple */
+  .modelecontour {
+    position: relative;
+    top: 14vw;
+    left: 24.6%;
+    width: 50%;
+    opacity: 0;
+    height: 2.3vw;
+    border-radius: 100vw;
+    border: 2px solid transparent;
+  }
+  
+  /* Mise en forme de l'intérieur de la barre d'exemple */
+  .modelebar {
+    position: absolute;
+    width: 99.7%;
+    height: 88%;
+    left: 0.1vw;
+    top: 0.1vw;
+    background: linear-gradient(to right, #f54f4f 10%, #fa762a 20%, #f7eb3c 50%, #7cf14e 70%, #35e0e0 90%);
+    border-radius: 100vw;
+    box-shadow: none;
+  }
+  
+  /* Mise en forme des mots qualifiant les différentes parties de la barre d'exemple */
+  .notions,
+  .connaissances,
+  .bonnes,
+  .maitrise,
+  .expert {
+    position: absolute;
+    font-size: 1vw;
+    color: #7a7a7a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    top: 2vw;
+    text-align: center;
+  }
+  
+  .notions {
+    left: 6.5%;
+  }
+  
+  .connaissances {
+    left: 22.5%;
+  }
+  
+  .bonnes {
+    left: 43%;
+  }
+  
+  .maitrise {
+    left: 66%;
+  }
+  
+  .expert {
+    left: 87%;
+  }
+  
+  /* Mise en forme des traits séparant les parties de la barre d'exemple */
+  .bar1,
+  .bar2,
+  .bar3,
+  .bar4 {
+    position: absolute;
+    width: 0.1vw;
+    height: 3.5vw;
+    background-color: #7a7a7a;
+    padding: 0.02vw;
+    top: -1.75vw;
+    border-radius: 100px;
+  }
+  
+  .bar1 {
+    left: 20%;
+  }
+  
+  .bar2 {
+    left: 40%;
+  }
+  
+  .bar3 {
+    left: 60%;
+  }
+  
+  .bar4 {
+    left: 80%;
+  }
+  
+  /* Mise en forme des pourcentages au dessus des traits */
+  .barpourcent1,
+  .barpourcent2,
+  .barpourcent3,
+  .barpourcent4 {
+    position: absolute;
+    top: -4.5vw;
+    color: #7a7a7a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.5vw;
+  }
+  
+  .barpourcent1 {
+    left: 18%;
+  }
+  
+  .barpourcent2 {
+    left: 38%;
+  }
+  
+  .barpourcent3 {
+    left: 58%;
+  }
+  
+  .barpourcent4 {
+    left: 78%;
+  }
+  
+  /* Mise en forme de la 1ere partie de la barre d'exemple */
+  .notionsbar {
+    position: absolute;
+    width: 20%;
+    height: 99%;
+    left: 0vw;
+    top: 0vw;
+    box-shadow: -1px 0px 10px #f53737;
+    border-bottom-left-radius: 100vw;
+    border-top-left-radius: 100vw;
+    background: linear-gradient(0deg, #c030308f 0.5%, #7a7a7a00 99%)
+  }
+  
+  /* Mise en forme de la 2e partie de la barre d'exemple */
+  .connaissancesbar {
+    left: 20%;
+    box-shadow: 0px 0px 10px #fa762a;
+    border-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    background: linear-gradient(0deg, #b859228c 0.05%, #7a7a7a00 99%)
+  }
+  
+  /* Mise en forme de la 3e partie de la barre d'exemple */
+  .bonnesbar {
+    left: 40.2%;
+    box-shadow: 0px 0px 10px #f7eb3c;
+    border-radius: 0px;
+    background: linear-gradient(0deg, #a0971c7c 0.05%, #7a7a7a00 99%)
+  }
+  
+  /* Mise en forme de la 4e partie de la barre d'exemple */
+  .maitrisebar {
+    left: 60.25%;
+    box-shadow: 0px 0px 10px #7cf14e;
+    border-radius: 0px;
+    background: linear-gradient(0deg, #45a12093 0.05%, #7a7a7a00 99%)
+  }
+  
+  /* Mise en forme de la 5e partie de la barre d'exemple */
+  .expertbar {
+    left: 80.25%;
+    width: 19.6%;
+    box-shadow: 0px 0px 10px #35e0e0;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    background: linear-gradient(0deg, #20a0a085 0.05%, #7a7a7a00 99%)
+  }
+  
+  /* Animation du contour de la barre d'exemple qd elle apparait */
+  @keyframes contourapparition {
+    0% {
+      opacity: 0;
+      box-shadow: none;
+    }
+  
+    100% {
+      opacity: 1;
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      border: 2px solid transparent;
+    }
+  }
+  
+  .contourapparition {
+    animation: contourapparition ease 0.5s forwards 0.5s;
+  }
+  
+  /* Animation du contour de la barre d'exemple qd elle disparait */
+  @keyframes contourdisparition {
+    100% {
+      opacity: 0;
+      box-shadow: none;
+    }
+  
+    0% {
+      opacity: 1;
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      border: 2px solid transparent;
+    }
+  }
+  
+  .contourdisparition {
+    animation: contourdisparition ease 0.5s forwards;
+  }
+  
+  /* Mise en forme des des compétences langues */
+  .competence1 {
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 2vw;
+    top: 19vw;
+    left: 12%;
+    width: 70.8vw;
+    height: 11.5vw;
+    padding-left: 4%;
+    margin-bottom: 3vw;
+    opacity: 0;
+  }
+  
+  /* Mise en forme du titre compétences langue */
+  .competencetitre1 {
+    padding: 2%;
+    border-radius: 100%;
+    background-color: #e0e5ec;
+    box-shadow: 5px 5px 10px #bec3c9,
+      -5px -5px 10px #ffffff;
+    color: #79be7a;
+    font-size: 2vw;
+    opacity: 0;
+    margin-left: 10%;
+  }
+  
+  /* Mise en forme du mot anglais */
+  .anglais {
+    color: #7a7a7a;
+    font-size: 1.5vw;
+    position: absolute;
+  }
+  
+  /* Mise en forme du contour de la barre anglais */
+  .anglaiscontour {
+    width: 15vw;
+    height: 1.5vw;
+    opacity: 0;
+    position: absolute;
+    top: 7vw;
+    left: 20%;
+    border-radius: 100vw;
+    border: transparent;
+  }
+  
+  /* Mise en forme du pourcentage anglais */
+  .anglaispourcent {
+    left: 42%;
+  }
+  
+  /* Pareil pour la barre anglais */
+  .espagnol {
+    left: 55%;
+  }
+  
+  .espagnolcontour {
+    left: 70%;
+  }
+  
+  .espagnolpourcent {
+    left: 92%;
+  }
+  
+  /* Mise en forme des compétences Langages */
+  .competence2 {
+    height: 20vw;
+  }
+  
+  .jquery {
+    top: 10vw;
+  }
+  
+  .jquerycontour {
+    top: 11.4vw;
+  }
+  
+  .jquerypourcent {
+    top: 10vw;
+  }
+  
+  .php {
+    top: 10vw;
+  }
+  
+  .phpcontour {
+    top: 11.4vw;
+  }
+  
+  .phppourcent {
+    top: 10vw;
+  }
+  
+  .sql {
+    top: 14.5vw;
+  }
+  
+  .sqlcontour {
+    top: 15.8vw;
+  }
+  
+  .sqlpourcent {
+    top: 14.5vw;
+  }
+  
+  /* Mise en forme des compétences Logiciels */
+  .competence3 {
+    height: 20vw;
+  }
+  
+  /* Mise en forme du titre formulaire dans la page formulaire */
+  .formulaire {
+    background: url(logo/formulaire.png) no-repeat 21%/8%;
+    width: 25vw;
+    color: #75ccb3;
+    z-index: 4;
+    padding-left: 4.5%;
+    left: 37.5%;
+  }
+  
+  /* Animation des inputs qd ils apparaissent */
+  @keyframes formulaireapparition {
+    0% {
+      opacity: 0;
+      box-shadow: none;
+    }
+  
+    100% {
+      opacity: 1;
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff;
+    }
+  }
+  
+  .formulaireapparition {
+    animation: formulaireapparition ease 0.5s forwards 0.5s;
+  }
+  
+  /* Animation des inputs qd ils disparaissent */
+  @keyframes formulairedisparition {
+    100% {
+      opacity: 0;
+      box-shadow: none;
+    }
+  
+    0% {
+      opacity: 1;
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff;
+    }
+  }
+  
+  .formulairedisparition {
+    animation: formulairedisparition ease 0.5s forwards;
+  }
+  
+  /* Mise en forme de l'input nom */
+  .formulairenom {
+    height: 4vw;
+    width: 30%;
+    border-radius: 100vw;
+    border: none;
+    background-color: #e0e5ec;
+    font-size: 1.5vw;
+    padding-left: 2%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    position: absolute;
+    opacity: 0;
+    top: 15vw;
+    left: 15%;
+  }
+  
+  /* Mise en forme de l'input email */
+  .formulaireemail {
+    top: 22vw;
+  }
+  
+  /* Mise en forme de l'input objet */
+  .formulaireobjet {
+    top: 29vw;
+  }
+  
+  /* Mise en forme de l'input commentaire */
+  .formulairecom {
+    position: absolute;
+    top: 15vw;
+    left: 53%;
+    padding-top: 1%;
+    height: 17vw;
+    border-radius: 2vw;
+  }
+  
+  /* Animation des inputs lorsqu'ils ne sont pas valides */
+  input:focus,
+  textarea:focus {
+    background-color: #f54f4f2c;
+  }
+  
+  /* Animation des inputs lorsqu'ils sont valides */
+  input:valid,
+  textarea:valid {
+    background-color: #75ccb33d;
+  }
+  
+  /* Animation des inputs lorsqu'ils ont le focus */
+  @keyframes inputmousedown {
+    0% {
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff;
+      opacity: 1;
+    }
+  
+    100% {
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .inputmousedown {
+    animation: inputmousedown ease 0.2s forwards;
+  }
+  
+  /* Animation des inputs lorsqu'ils n'ont plus le focus */
+  @keyframes inputmouseup {
+    0% {
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff, 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      opacity: 1;
+      border: none;
+    }
+  
+    100% {
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .inputmouseup {
+    animation: inputmouseup ease 0.5s forwards;
+  }
+  
+  /* Mise en forme du bouton envoyer */
+  .envoyer {
+    position: absolute;
+    top: 38vw;
+    left: 42.5%;
+    width: 15%;
+    height: 4vw;
+    background-color: transparent;
+    border: none;
+    color: #7a7a7a;
+    font-size: 1.5vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    border-radius: 100vw;
+    opacity: 0;
+  }
+  
+  /* Animation du bouton envoyer lorsqu'on le survole*/
+  @keyframes envoyerhover {
+    0% {
+      opacity: 1;
+    }
+  
+    100% {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .envoyerhover {
+    animation: envoyerhover ease 0.2s forwards;
+  }
+  
+  /* Animation du bouton envoyer lorsqu'on ne le survole plus*/
+  @keyframes envoyermouseout {
+    0% {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      opacity: 1;
+    }
+  
+    100% {
+      box-shadow: none;
+      opacity: 1;
+    }
+  }
+  
+  .envoyermouseout {
+    animation: envoyermouseout ease 0.3s forwards;
+  }
+  
+  /* Animation du bouton envoyer lorsqu'on appuie dessus*/
+  @keyframes envoyermousedown {
+    0% {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      opacity: 1;
+    }
+  
+    100% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .envoyermousedown {
+    animation: envoyermousedown ease 0.05s forwards;
+  }
+  
+  /* Animaition du bouton envoyer lorsqu'on appuie plus dessus*/
+  @keyframes envoyermouseup {
+    100% {
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      opacity: 1;
+    }
+  
+    0% {
+      box-shadow: 5px 5px 10px #bec3c9,
+        -5px -5px 10px #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .envoyermouseup {
+    animation: envoyermouseup ease 0.1s forwards;
+  }
+  
+  /* Animaition du bouton envoyer lorsqu'il apparait*/
+  @keyframes envoyerapparition {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .envoyerapparition {
+    animation: envoyerapparition ease 0.5s forwards 0.5s;
+  }
+  
+  /* Mise en forme du titre intérêts dans la page intérêts */
+  .interets {
+    background: url(logo/interets.png) no-repeat;
+    background-position: 29%;
+    background-size: 11%;
+    width: 23vw;
+    color: #cc87b0;
+    z-index: 4;
+    padding-left: 5%;
+    left: 38%;
+  }
+  
+  /* Mise en forme des 5 intérêts */
+  .interet1,
+  .interet2,
+  .interet3,
+  .interet4,
+  .interet5 {
+    content: "";
+    position: relative;
+    border: none;
+    border-radius: 1.8vw;
+    color: transparent;
+    font-weight: bold;
+    width: 12%;
+    height: 11vw;
+    z-index: 4;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5vw;
+    top: 13vw;
+    left: 18%;
+    padding-top: 1%;
+    opacity: 0;
+    text-align: center;
+    background: url(logo/dessin.png) no-repeat center/70%;
+    position: fixed;
+  }
+  
+  .interet2 {
+    top: 13vw;
+    left: 44%;
+    background: url(logo/serie.png) no-repeat center/70%;
+  }
+  
+  .interet3 {
+    top: 13vw;
+    left: 70%;
+    background: url(logo/musique.png) no-repeat center/70%;
+  }
+  
+  .interet4 {
+    top: 30vw;
+    left: 31%;
+    background: url(logo/jeux.png) no-repeat center/70%;
+  }
+  
+  .interet5 {
+    top: 30vw;
+    left: 57%;
+    background: url(logo/voyage.png) no-repeat center/70%;
+  }
+  
+  /* Mise en forme des textes à l'intérieur des cases intérêts */
+  .interettexte1,
+  .interettexte2,
+  .interettexte3,
+  .interettexte4,
+  .interettexte5 {
+    text-align: left;
+    padding: 8%;
+    font-size: 1vw;
+    color: transparent;
+    border-radius: 1.3vw;
+    position: absolute;
+    left: 4%;
+    width: 76%;
+    height: 8vw;
+    top: 17%;
+    opacity: 0;
+    text-align: center;
+  }
+  
+  .interettexte2 {
+    padding: 6%;
+    width: 80%;
+    left: 4.2%;
+    height: 7.3vw;
+  }
+  
+  .interettexte3 {
+    padding: 5%;
+    width: 84%;
+    left: 3%;
+    height: 8.5vw;
+  }
+  
+  .interettexte4 {
+    padding: 4%;
+    width: 87%;
+    left: 2.5%;
+    height: 8.8vw;
+  }
+  
+  /* Animation de l'intérêt 1 quand on le survole */
+  @keyframes interethover {
+    0% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/dessin.png) no-repeat center/70%;
+      color: transparent;
+    }
+  
+    90% {
+      color: transparent;
+    }
+  
+    100% {
+      left: 14%;
+      top: 10.8vw;
+      width: 20%;
+      height: 14.6vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/dessin.png) no-repeat 25% 5%/12%;
+      color: #4b4b4b;
+    }
+  }
+  
+  .interethover {
+    animation: interethover ease 0.5s forwards
+  }
+  
+  /* Animation de l'intérêt 1 quand on ne le survole plus*/
+  @keyframes interetmouseout {
+    0% {
+      left: 14%;
+      top: 10.8vw;
+      width: 20%;
+      height: 14.6vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/dessin.png) no-repeat 25% 5%/12%;
+    }
+  
+    100% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/dessin.png) no-repeat center/70%;
+    }
+  }
+  
+  .interetmouseout {
+    animation: interetmouseout ease 1s forwards;
+  }
+  
+  /* Animation de l'intérêt 2 quand on le survole */
+  @keyframes interet2hover {
+    0% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/serie.png) no-repeat center/70%;
+      color: transparent;
+    }
+  
+    90% {
+      color: transparent;
+    }
+  
+    100% {
+      left: 40%;
+      top: 12.15vw;
+      width: 20%;
+      height: 12.7vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/serie.png) no-repeat 20% 5%/12%;
+      color: #4b4b4b;
+    }
+  }
+  
+  .interet2hover {
+    animation: interet2hover ease 0.5s forwards
+  }
+  
+  /* Animation de l'intérêt 2 quand on ne le survole plus*/
+  @keyframes interet2mouseout {
+    0% {
+      left: 40%;
+      top: 12.15vw;
+      width: 20%;
+      height: 12.7vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/serie.png) no-repeat 20% 5%/12%;
+    }
+  
+    100% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/serie.png) no-repeat center/70%;
+    }
+  }
+  
+  .interet2mouseout {
+    animation: interet2mouseout ease 1s forwards;
+  }
+  
+  /* Animation de l'intérêt 3 quand on le survole */
+  @keyframes interet3hover {
+    0% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/musique.png) no-repeat center/70%;
+      color: transparent;
+    }
+  
+    90% {
+      color: transparent;
+    }
+  
+    100% {
+      left: 61.5%;
+      top: 10.8vw;
+      width: 29%;
+      height: 15vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/musique.png) no-repeat 28% 5%/9%;
+      color: #4b4b4b;
+    }
+  }
+  
+  .interet3hover {
+    animation: interet3hover ease 0.5s forwards
+  }
+  
+  /* Animation de l'intérêt 3 quand on ne le survole plus*/
+  @keyframes interet3mouseout {
+    0% {
+      left: 61.5%;
+      top: 10.8vw;
+      width: 30%;
+      height: 15vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/musique.png) no-repeat 28% 5%/9%;
+    }
+  
+    100% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/musique.png) no-repeat center/70%;
+    }
+  }
+  
+  .interet3mouseout {
+    animation: interet3mouseout ease 1s forwards;
+  }
+  
+  /* Animation de l'intérêt 4 quand on le survole */
+  @keyframes interet4hover {
+    0% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/jeux.png) no-repeat center/70%;
+      color: transparent;
+    }
+  
+    90% {
+      color: transparent;
+    }
+  
+    100% {
+      left: 20%;
+      top: 29vw;
+      width: 34%;
+      height: 15vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/jeux.png) no-repeat 27% 5%/11%;
+      color: #4b4b4b;
+    }
+  }
+  
+  .interet4hover {
+    animation: interet4hover ease 0.5s forwards
+  }
+  
+  /* Animation de l'intérêt 4 quand on ne le survole plus*/
+  @keyframes interet4mouseout {
+    0% {
+      left: 20%;
+      top: 29vw;
+      width: 34%;
+      height: 15vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/jeux.png) no-repeat 27% 5%/11%;
+    }
+  
+    100% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/jeux.png) no-repeat center/70%;
+    }
+  }
+  
+  .interet4mouseout {
+    animation: interet4mouseout ease 1s forwards;
+  }
+  
+  /* Animation de l'intérêt 5 quand on le survole */
+  @keyframes interet5hover {
+    0% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/voyage.png) no-repeat center/70%;
+      color: transparent;
+    }
+  
+    90% {
+      color: transparent;
+    }
+  
+    100% {
+      left: 53%;
+      top: 29vw;
+      width: 20%;
+      height: 14.8vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/voyage.png) no-repeat 18% 6%/16%;
+      color: #4b4b4b;
+    }
+  }
+  
+  .interet5hover {
+    animation: interet5hover ease 0.5s forwards
+  }
+  
+  /* Animation de l'intérêt 5 quand on ne le survole plus*/
+  @keyframes interet5mouseout {
+    0% {
+      left: 53%;
+      top: 29vw;
+      width: 20%;
+      height: 14.8vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/voyage.png) no-repeat 18% 6%/16%;
+    }
+  
+    100% {
+      width: 12%;
+      height: 11vw;
+      opacity: 1;
+      box-shadow: 15px 15px 30px #bec3c9,
+        -15px -15px 30px #ffffff;
+      background: url(logo/voyage.png) no-repeat center/70%;
+    }
+  }
+  
+  .interet5mouseout {
+    animation: interet5mouseout ease 1s forwards;
+  }
+  
+  /* Animation des textes à l'intérieur des cases intérêts quand on les survole */
+  @keyframes interettextehover {
+    0% {
+      opacity: 0;
+      box-shadow: none;
+      color: transparent;
+    }
+  
+    50% {
+      color: transparent;
+    }
+  
+    100% {
+      opacity: 1;
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff;
+      color: #7a7a7a;
+    }
+  }
+  
+  .interettextehover {
+    animation: interettextehover ease 0.5s forwards 0.4s;
+  }
+  
+  /* Animation des textes à l'intérieur des cases intérêts quand on ne les survole plus */
+  @keyframes interettextemouseout {
+    0% {
+      opacity: 1;
+      box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff;
+      color: #7a7a7a;
+    }
+  
+    30% {
+      color: transparent;
+    }
+  
+    100% {
+      opacity: 0;
+      box-shadow: none;
+      color: transparent;
+    }
+  }
+  
+  .interettextemouseout {
+    animation: interettextemouseout ease 0.5s forwards;
+  }
+  
+  /* Mise en forme du titre de chaque intérêt */
+  .interetnom1 {
+    text-align: center;
+    margin: 5%;
+    opacity: 0;
+  }
+  
+  /* Mise en forme du lien externe dans le texte de l'intérêt 1 */
+  .interetsite {
+    color: transparent;
+  }
+  
+  /* Animation du lien externe dans le texte de l'intérêt 1 */
+  @keyframes interetsitehover {
+    0% {
+      color: transparent;
+    }
+  
+    50% {
+      color: transparent;
+    }
+  
+    100% {
+      color: #cc87b0;
+    }
+  }
+  
+  .interetsitehover {
+    animation: interetsitehover ease 0.5s forwards 0.6s;
+  }
+  
+  @keyframes interetsitemouseout {
+    0% {
+      color: #cc87b0;
+    }
+  
+    30% {
+      color: transparent;
+    }
+  
+    100% {
+      color: transparent;
+    }
+  }
+  
+  .interetsitemouseout {
+    animation: interetsitemouseout ease 0.5s forwards;
+  }
